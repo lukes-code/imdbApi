@@ -3,10 +3,11 @@ A movie search website using the omdbApi for IMDb
 
 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 
-This is still undergoing development, road map as follows:
-✔️ Successful response from ombdApi
-✔️ Initial grid system
-✔️ Individual information pages with ext. link to IMDb pages
-❌ CSS that doesn't look terrible
-❌ My personal favourite films/shows
-❌ Possible genre/category side column implemented on index.html, e.g. displaying top 25 rated films in each
+This is still undergoing development, road map as follows:<br />
+
+✔️ Successful response from ombdApi<br />
+✔️ Initial grid system<br />
+✔️ Individual information pages with ext. link to IMDb pages<br />
+❌ CSS that doesn't look terrible<br />
+❌ My personal favourite films/shows<br />
+❌ Possible genre/category side column implemented on index.html, e.g. displaying top 25 rated films in each<br />
