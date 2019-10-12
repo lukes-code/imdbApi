@@ -16,17 +16,43 @@ function getMovies(searchText){
         .then((response) => {
             let movies = response.data.Search;
             let output = '';
-            $.each(movies, (index, movie) => {
-                output += `
-                    <div class="col-md-3">
-                        <div class="well text-center">
-                            <img src="${movie.Poster}" alt="${movie.Title}"/>
-                            <h5>${movie.Title}</h5>
-                            <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="#">Movie Details</a>
+            let film = 'You should search for a movie you like, I like ';
+            if(response.data.Response == 'False'){
+                document.getElementById('no-listings').classList.add('no-listings');
+                let math = Math.floor(Math.random() * 10);
+                if(math < 2){
+                     film += 'Halloween!';
+                } else if (math < 3){
+                     film += 'Joker played by J. Phoenix!';
+                } else if (math < 4){
+                    film += 'The Big Bang Theory';
+                } else if (math < 5){
+                    film += 'Blood Diamond!';
+                } else if (math < 6){
+                    film += "Venom! (can't wait for canage)";
+                } else{
+                     film += 'The Walking Dead (not as much as the comics though!)';
+                }
+                document.getElementById('no-listings').innerText = film;
+                console.log(film);
+            } else{
+                document.getElementById('no-listings').innerText = '';
+                document.getElementById('no-listings').classList.remove('no-listings');
+                $.each(movies, (index, movie) => {
+                    output += `
+                        <div class="col-md-3 movie-listing">
+                            <a onclick="movieSelected('${movie.imdbID}')" href="#" id="goToMovie">
+                                <div class="well text-center">
+                                    <img src="${movie.Poster}" alt="${movie.Title}"/>
+                                    <h6 class="search-title">${movie.Title}</h5>
+                                    <p class="search-year">Released: ${movie.Year}</h5>
+                                </div>
+                            </a>
                         </div>
-                    </div>
-                `;
-            });
+                    `;
+                });
+            }
+           
 
             $('#movies').html(output);
             console.log(response);

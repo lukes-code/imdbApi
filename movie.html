@@ -3,6 +3,7 @@
     <head></head>
         <title>Movie Info</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
+        <script src="https://kit.fontawesome.com/42d5989152.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
@@ -10,23 +11,28 @@
         <nav class="navbar navbar-default">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="https://github.com/lukes-code" target="_blank">lukes.code</a>
+                    <a class="navbar-brand" href="https://github.com/lukes-code" target="_blank" id="brand"><i class="fab fa-github"></i>&nbsp;lukes-code</a>
                 </div>
             </div>
         </nav>
-       <!-- Populated movies -->
-       <div class="container">
+        <!-- Populated movies -->
+        <div class="container">
            <div id="movie" class="well">
 
            </div>
-       </div>
-       <!-- JQuery -->
-       <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-       <!-- Axios -->
-       <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-       <!-- Main JS -->
-       <script src="js/main.js"></script>
-       <!-- On load -->
-       <script>getMovie();</script>
+        </div>
+         <!-- Socials -->
+         <div class="socials">
+            <a href="https://github.com/lukes-code" target="_blank" id="github"><i class="fab fa-2x fa-github-square" aria-hidden="true"></i></a>
+            <a href="https://instagram.com/lukes.code" target="_blank" id="instagram"><i class="fab fa-2x fa-instagram" aria-hidden="true"></i></a>
+        </div>
+        <!-- JQuery -->
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <!-- Axios -->
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <!-- Main JS -->
+        <script src="js/main.js"></script>
+        <!-- On load -->
+        <script>getMovie();</script>
     </body>
 </html>

@@ -1,10 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+body{
+  font-family: 'Open Sans', sans-serif;
+}
+
 #movies img, #movie img{
     width: 100%;
 }
 
 @media (min-width: 960px){
     #movies .col-md-3 .well{
-        height: 390px;
+        height: 355px;
     }
 
     #movies .col-md-3 img{
@@ -44,4 +50,86 @@
     background: linear-gradient(to top,  #ffffff 0%,#EFEFEF 100%);
   }
 
-  /*  */
+  .well img{
+    border-radius: 5px;
+  }
+
+  .search-title{
+    margin: 10px;
+  }
+
+  .movie-listing:hover {
+    opacity: 0.8;
+  }
+
+  #goToMovie{
+    text-decoration: none;
+  }
+
+  .search-year{
+    color: #a3a3a3;
+  }
+
+  /* branding */
+
+  a#brand:hover {
+    color: #a3a3a3;
+  }
+
+  a#brand {
+      text-decoration: none;
+      cursor: pointer;
+      color: #fff;
+  }
+
+  /* Search bar */
+
+  div#search-jumbo {
+    background-color: transparent;
+  }
+
+  input#searchText {
+    border-radius: 20px;
+    height: 40px;
+    width: 75%;
+    margin: 0 auto;
+    background-size: contain;
+    background-image:url('../img/search.png');
+    background-repeat:no-repeat;
+    background-position:right center;
+    outline:0;
+    background-origin: content-box;
+}
+
+/* Socials */
+
+.socials {
+  flex: 1;
+  position: fixed;
+  padding: 30px;
+  right: 25px;
+  bottom: 5px;
+}
+
+#github, #instagram{
+  padding: 5px
+}
+
+.socials a {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* movie search */
+
+.well.text-center {
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 3px 5px rgba(163,163,163,0.20), 0 3px 5px rgba(163,163,163,0.20);
+  margin-bottom: 10px;
+}
+
+.no-listings{
+  text-align: center;
+  margin-top: 250px;
+}
