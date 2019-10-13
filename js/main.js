@@ -8,7 +8,41 @@ $(document).ready(() => {
         getMovies(searchText);
         e.preventDefault();
     });
+    $('.favourites').click(function(e) {
+        //Remove quote
+        document.getElementById('no-listings').innerText = '';
+        document.getElementById('no-listings').classList.remove('no-listings');
+        //Set hard coded favouites to find
+        films = ['Joker', 'Halloween', 'Deadpool', 'The Walking Dead'];
+        var i;
+        let output = '';
+        //Loop through favourites
+        for(i = 0; i < films.length; i++){
+            axios.get('http://www.omdbapi.com?apiKey=' + apiKey + '&s=' + films[i])
+            .then((response) => {
+                let movies = response.data.Search[0];
+                    output += `
+                        <div class="col-md-3 movie-listing">
+                            <a onclick="movieSelected('${movies.imdbID}')" href="#" id="goToMovie">
+                                <div class="well text-center">
+                                    <img src="${movies.Poster}" alt="${movies.Title}"/>
+                                    <h6 class="search-title">${movies.Title}</h5>
+                                    <p class="search-year">Released: ${movies.Year}</h5>
+                                </div>
+                            </a>
+                        </div>
+                    `;
+                $('#movies').html(output);
+                console.log(response);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+        }
+    });
 });
+
+
 
 function getMovies(searchText){
     // console.log(searchText);
