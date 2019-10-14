@@ -101,11 +101,25 @@ body{
     background-origin: content-box;
 }
 
-h6.favourites {
+.main-links{
+  display: flex;
+}
+
+#favouriteLinks {
   margin: 20px;
   text-align: center;
   cursor: pointer;
   text-decoration: underline;
+  display: inline;
+  flex: 1;
+}
+
+/* Favourites */
+
+.delegatedFave {
+  position: absolute;
+  bottom: 6%;
+  right: 12%;
 }
 
 /* Socials */

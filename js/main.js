@@ -1,17 +1,56 @@
 // Main JavaScript bruh
 
 const apiKey = '8c565e9a';
-
 $(document).ready(() => {
+
+    //Get search input
     $('#searchForm').on('keyup', (e) => {
         let searchText = $('#searchText').val();
         getMovies(searchText);
         e.preventDefault();
     });
+
+    //My favourites
+    $('.myFavourites').click(function() {
+        //Remove quote
+        $('#no-listings').text('');
+        $('#no-listings').removeClass('no-listings');
+
+        let films_deserialized = JSON.parse(localStorage.getItem('films'));
+        // alert(films);
+        var i;
+        let output = '';
+        
+        //Loop through favourites
+        for(i = 0; i < films.length; i++){
+            axios.get('http://www.omdbapi.com?apiKey=' + apiKey + '&s=' + films[i])
+            .then((response) => {
+                let movies = response.data.Search[0];
+                    output += `
+                        <div class="col-md-3 movie-listing">
+                            <a onclick="movieSelected('${movies.imdbID}')" href="#" id="goToMovie">
+                                <div class="well text-center">
+                                    <img src="${movies.Poster}" alt="${movies.Title}"/>
+                                    <h6 class="search-title">${movies.Title}</h5>
+                                    <p class="search-year">Released: ${movies.Year}</h5>
+                                </div>
+                            </a>
+                        </div>
+                    `;
+                $('#movies').html(output);
+                console.log(response);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+        }
+    });
+
+    //Lukes favourites
     $('.favourites').click(function(e) {
         //Remove quote
-        document.getElementById('no-listings').innerText = '';
-        document.getElementById('no-listings').classList.remove('no-listings');
+        $('#no-listings').text('');
+        $('#no-listings').removeClass('no-listings');
         //Set hard coded favouites to find
         films = ['Joker', 'Halloween', 'Deadpool', 'The Walking Dead'];
         var i;
@@ -52,7 +91,7 @@ function getMovies(searchText){
             let output = '';
             let film = 'You should search for a movie you like, I like ';
             if(response.data.Response == 'False'){
-                document.getElementById('no-listings').classList.add('no-listings');
+                $('#no-listings').addClass('no-listings');
                 let math = Math.floor(Math.random() * 10);
                 if(math < 2){
                      film += 'Halloween!';
@@ -67,23 +106,35 @@ function getMovies(searchText){
                 } else{
                      film += 'The Walking Dead (not as much as the comics though!)';
                 }
-                document.getElementById('no-listings').innerText = film;
+                $('#no-listings').text(film);
                 console.log(film);
             } else{
-                document.getElementById('no-listings').innerText = '';
-                document.getElementById('no-listings').classList.remove('no-listings');
+                $('#no-listings').text('');
+                $('#no-listings').removeClass('no-listings');
                 $.each(movies, (index, movie) => {
+                    isFavourite = films.includes(`${movie.Title}`);
+                    // alert('is the title in the array? : ' + isFavourite);
                     output += `
                         <div class="col-md-3 movie-listing">
-                            <a onclick="movieSelected('${movie.imdbID}')" href="#" id="goToMovie">
-                                <div class="well text-center">
-                                    <img src="${movie.Poster}" alt="${movie.Title}"/>
-                                    <h6 class="search-title">${movie.Title}</h5>
-                                    <p class="search-year">Released: ${movie.Year}</h5>
-                                </div>
-                            </a>
+                            <div class="well text-center">
+                                <a onclick="movieSelected('${movie.imdbID}')" href="#" id="goToMovie"><img src="${movie.Poster}" alt="${movie.Title}"/></a>
+                                <h6 class="search-title">${movie.Title}</h6>
+                                <p class="search-year">Released: ${movie.Year}</p>
+                    `;
+
+                    if(isFavourite == true){
+                        output += `
+                                <div class="delegatedFave"><i class="fas fa-star" id="checked"></i></div>
+                            </div>
                         </div>
                     `;
+                    } else {
+                        output += `
+                                <div class="delegatedFave"><i class="far fa-star" id="not-checked"></i></div>
+                            </div>
+                        </div>
+                    `;
+                    }
                 });
             }
            
@@ -147,3 +198,29 @@ function getMovie(){
             console.log(err);
         });
 }
+
+//Global film array for my favourites
+let films = [];
+let films_serialized = JSON.stringify(films);
+localStorage.setItem('films', films_serialized);
+
+//Check if film is a favourite or not
+$(document).on("click", '.fa-star', function(){
+    if($(this).attr('id') == 'not-checked'){
+        $(this).removeAttr('id');
+        $(this).attr('id', 'checked');
+        $(this).removeClass('far');
+        $(this).addClass('fas');
+        let title = $(this).closest('.well').find('.search-title').text();
+        films.push(title);
+        console.log('you added ' + title + ' to your favourites');
+    } else{
+        $(this).removeAttr('id');
+        $(this).attr('id', 'not-checked');
+        $(this).removeClass('fas');
+        $(this).addClass('far');
+        let title = $(this).closest('.well').find('.search-title').text();
+        console.log('you removed ' + title + ' from your favourites');
+        films = films.filter(e => e !== title);
+    }
+  });
