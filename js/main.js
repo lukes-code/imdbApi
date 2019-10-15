@@ -1,6 +1,7 @@
 // Main JavaScript bruh
 
 const apiKey = '8c565e9a';
+randomTry = 0;
 $(document).ready(() => {
 
     //Get search input
@@ -194,6 +195,77 @@ function getMovie(){
         });
 }
 
+function getRandomMovie(){
+    let movieId = "tt" + Math.floor(Math.random() * 10000000);
+    console.log(movieId);
+    //only try 10 times to stop infinite loop
+    console.log(randomTry);
+    if(randomTry < 10){
+        axios.get('http://www.omdbapi.com?apiKey=' + apiKey + '&i=' + movieId)
+            .then((response) => {
+                if(response.data.Response == 'True'){
+                    console.log(response);
+                    let movie = response.data;
+
+                    let output = `
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a href='javascript:getRandomMovie()' class="try-again-btn"><h3>Try again?</h3></a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="${movie.Poster}" alt="${movie.Title}" class="thumbnail"/>
+                            </div>
+                            <div class="col-md-8">
+                                <h2>${movie.Title}</h2>
+                                <ul class="list-group">
+                                    <li class="list-group-item"><strong>Genre:</strong> ${movie.Genre}</li>
+                                    <li class="list-group-item"><strong>Released:</strong> ${movie.Released}</li>
+                                    <li class="list-group-item"><strong>Rated:</strong> ${movie.Rated}</li>
+                                    <li class="list-group-item"><strong>IMDB Rating:</strong> ${movie.imdbRating}</li>
+                                    <li class="list-group-item"><strong>Director:</strong> ${movie.Director}</li>
+                                    <li class="list-group-item"><strong>Writer:</strong> ${movie.Writer}</li>
+                                    <li class="list-group-item"><strong>Actors:</strong> ${movie.Actors}</li>
+                                    <li class="list-group-item"><strong>Country:</strong> ${movie.Country}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                        <div class="well">
+                            <h3>Plot</h3>
+                            <div class="co-md-12 list-group-item">
+                                <p>${movie.Plot}</p>
+                            </div>
+                            <hr>
+                            <a href="http://imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-primary">View IMDB</a>
+                            <a href="index.html" class="btn btn-default">Go back to search</a>
+                        </div>
+                        </div>
+                    `;
+
+                    $('#movie').html(output);
+                } else {
+                    randomTry++;
+                    getRandomMovie();
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    } else {
+        let output = `
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Could not find anything. <a href='javascript:javascript:getRandomMovie()' class="try-again-btn">Try again?</a></h3>
+                <a href="index.html" class="btn btn-default">Go back to search</a>
+            </div>
+        </div>
+        `   
+        $('#movie').html(output);
+    }
+}
+
 //Global film array for my favourites
 let films = [];
 let films_serialized = JSON.stringify(films);
@@ -219,3 +291,8 @@ $(document).on("click", '.fa-star', function(){
         films = films.filter(e => e !== title);
     }
   });
+
+//Reset random movie try count
+$(document).on("click", '.try-again-btn', function(){
+    randomTry = 0;
+});
