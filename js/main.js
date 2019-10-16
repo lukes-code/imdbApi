@@ -85,6 +85,14 @@ $(document).ready(() => {
 
 function getMovies(searchText){
     // console.log(searchText);
+    arNoListings = [
+    'Halloween!',
+    'Joker played by J. Phoenix!',
+    'The Big Bang Theory',
+    'Blood Diamond!',
+    'Venom! (can\'t wait for carnage)!',
+    'The Walking Dead (not as much as the comics though!)'
+    ];
     axios.get('http://www.omdbapi.com?apiKey=' + apiKey + '&s=' + searchText)
         .then((response) => {
             let movies = response.data.Search;
@@ -92,20 +100,7 @@ function getMovies(searchText){
             let film = 'You should search for a movie you like, I like ';
             if(response.data.Response == 'False'){
                 $('#no-listings').addClass('no-listings');
-                let math = Math.floor(Math.random() * 10);
-                if(math < 2){
-                     film += 'Halloween!';
-                } else if (math < 3){
-                     film += 'Joker played by J. Phoenix!';
-                } else if (math < 4){
-                    film += 'The Big Bang Theory';
-                } else if (math < 5){
-                    film += 'Blood Diamond!';
-                } else if (math < 6){
-                    film += "Venom! (can't wait for canage)";
-                } else{
-                     film += 'The Walking Dead (not as much as the comics though!)';
-                }
+                film += arNoListings[Math.floor(Math.random() * arNoListings.length)];
                 $('#no-listings').text(film);
                 console.log(film);
             } else{
