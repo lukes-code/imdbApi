@@ -97,7 +97,7 @@ function getMovies(searchText){
         .then((response) => {
             let movies = response.data.Search;
             let output = '';
-            let film = 'You should search for a movie you like, I like ';
+            let film = 'You should search for a movie/series you like, I like ';
             if(response.data.Response == 'False'){
                 $('#no-listings').addClass('no-listings');
                 film += arNoListings[Math.floor(Math.random() * arNoListings.length)];
