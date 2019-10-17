@@ -166,3 +166,11 @@ body{
 a.no-link-color:link,a.no-link-color:visited,a.no-link-color:active,a.no-link-color:hover{
   color:#fff;
 }
+
+footer {
+  width: 100%;
+  text-align: center;
+  bottom:0px;
+  color: white;
+  position: absolute;
+}
