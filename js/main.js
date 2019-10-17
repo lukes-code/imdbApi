@@ -153,14 +153,16 @@ function getMovie(){
     let movieId = sessionStorage.getItem('movieId');
     axios.get('http://www.omdbapi.com?apiKey=' + apiKey + '&i=' + movieId)
         .then((response) => {
-            //console.log('movie response:');
-            //console.log(response);
+            console.log(response);
             let movie = response.data;
             let arYears = movie.Year.split("-");
             if (arYears[1] === undefined) {
                 arYears[1] = 'current';
                 arYears[0] = arYears[0].substr(0, arYears[0].length - 1);
             }
+            // make sure movie date has seperated
+            console.log('years:');
+            console.log(arYears);
             let output = `
                 <div class="row">
                     <div class="col-md-4">
