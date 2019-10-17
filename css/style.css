@@ -154,3 +154,15 @@ body{
   text-align: center;
   margin-top: 250px;
 }
+
+.randomMovie{
+  margin: 20px;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: underline;
+  display: inline;
+  flex: 1;
+}
+a.no-link-color:link,a.no-link-color:visited,a.no-link-color:active,a.no-link-color:hover{
+  color:#fff;
+}
