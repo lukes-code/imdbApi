@@ -153,7 +153,8 @@ function getMovie(){
     let movieId = sessionStorage.getItem('movieId');
     axios.get('http://www.omdbapi.com?apiKey=' + apiKey + '&i=' + movieId)
         .then((response) => {
-            console.log(response);
+            //console.log('movie response:');
+            //console.log(response);
             let movie = response.data;
             let arYears = movie.Year.split("-");
             if (arYears[1] === undefined) {
