@@ -155,7 +155,11 @@ function getMovie(){
         .then((response) => {
             console.log(response);
             let movie = response.data;
-
+            let arYears = movie.Year.split("-");
+            if (arYears[1] === undefined) {
+                arYears[1] = 'current';
+                arYears[0] = arYears[0].substr(0, arYears[0].length - 1);
+            }
             let output = `
                 <div class="row">
                     <div class="col-md-4">
@@ -166,6 +170,7 @@ function getMovie(){
                         <ul class="list-group">
                             <li class="list-group-item"><strong>Genre:</strong> ${movie.Genre}</li>
                             <li class="list-group-item"><strong>Released:</strong> ${movie.Released}</li>
+                            <li class="list-group-item"><strong>Years Running:</strong> ${arYears[0]} to ${arYears[1]}</li>
                             <li class="list-group-item"><strong>Rated:</strong> ${movie.Rated}</li>
                             <li class="list-group-item"><strong>IMDB Rating:</strong> ${movie.imdbRating}</li>
                             <li class="list-group-item"><strong>Director:</strong> ${movie.Director}</li>
