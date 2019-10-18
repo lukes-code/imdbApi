@@ -174,3 +174,7 @@ footer {
   color: #fff;
   position: absolute;
 }
+
+.fa-star{
+  >color: #9a9a64;
+}
