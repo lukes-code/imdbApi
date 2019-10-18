@@ -193,7 +193,8 @@ function getMovie(){
                     </div>
                     <hr>
                     <a href="http://imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-primary">View IMDB</a>
-                    <a href="index.html" class="btn btn-default">Go back to search</a>
+                    <!--THis looks better underlined-->
+                    <a href="index.html" class="btn btn-default"><u>Go back to search</u></a>
                 </div>
                 </div>
             `;
