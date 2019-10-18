@@ -92,7 +92,9 @@ function getMovies(searchText){
     'The Big Bang Theory',
     'Blood Diamond!',
     'Venom! (can\'t wait for carnage)!',
-    'The Walking Dead (not as much as the comics though!)'
+    'The Walking Dead (not as much as the comics though!)',
+    'Avengers!',
+    'Avengers: End Game!'
     ];
     axios.get('http://www.omdbapi.com?apiKey=' + apiKey + '&s=' + searchText)
         .then((response) => {
@@ -161,8 +163,8 @@ function getMovie(){
                 arYears[0] = arYears[0].substr(0, arYears[0].length - 1);
             }
             // make sure movie date has seperated
-            console.log('years:');
-            console.log(arYears);
+            // console.log('years:');
+            // console.log(arYears);
             let output = `
                 <div class="row">
                     <div class="col-md-4">
