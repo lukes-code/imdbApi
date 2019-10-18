@@ -166,3 +166,7 @@ body{
 a.no-link-color:link,a.no-link-color:visited,a.no-link-color:active,a.no-link-color:hover{
   color:#fff;
 }
+
+.fa-star{
+  >color: #9a9a64;
+  }
