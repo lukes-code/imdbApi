@@ -92,7 +92,9 @@ function getMovies(searchText){
     'The Big Bang Theory',
     'Blood Diamond!',
     'Venom! (can\'t wait for carnage)!',
-    'The Walking Dead (not as much as the comics though!)'
+    'The Walking Dead (not as much as the comics though!)',
+    'Avengers!',
+    'Avengers: End Game!'
     ];
     axios.get('http://www.omdbapi.com?apiKey=' + apiKey + '&s=' + searchText)
         .then((response) => {
@@ -155,7 +157,14 @@ function getMovie(){
         .then((response) => {
             console.log(response);
             let movie = response.data;
-
+            let arYears = movie.Year.split("-");
+            if (arYears[1] === undefined) {
+                arYears[1] = 'current';
+                arYears[0] = arYears[0].substr(0, arYears[0].length - 1);
+            }
+            // make sure movie date has seperated
+            // console.log('years:');
+            // console.log(arYears);
             let output = `
                 <div class="row">
                     <div class="col-md-4">
@@ -166,6 +175,7 @@ function getMovie(){
                         <ul class="list-group">
                             <li class="list-group-item"><strong>Genre:</strong> ${movie.Genre}</li>
                             <li class="list-group-item"><strong>Released:</strong> ${movie.Released}</li>
+                            <li class="list-group-item"><strong>Years Running:</strong> ${arYears[0]} to ${arYears[1]}</li>
                             <li class="list-group-item"><strong>Rated:</strong> ${movie.Rated}</li>
                             <li class="list-group-item"><strong>IMDB Rating:</strong> ${movie.imdbRating}</li>
                             <li class="list-group-item"><strong>Director:</strong> ${movie.Director}</li>
@@ -183,7 +193,8 @@ function getMovie(){
                     </div>
                     <hr>
                     <a href="http://imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-primary">View IMDB</a>
-                    <a href="index.html" class="btn btn-default">Go back to search</a>
+                    <!--THis looks better underlined-->
+                    <a href="index.html" class="btn btn-default"><u>Go back to search</u></a>
                 </div>
                 </div>
             `;
