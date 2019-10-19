@@ -167,14 +167,6 @@ a.no-link-color:link,a.no-link-color:visited,a.no-link-color:active,a.no-link-co
   color:#fff;
 }
 
-footer {
-  width: 100%;
-  text-align: center;
-  bottom:0px;
-  color: #fff;
-  position: absolute;
-}
-
 .fa-star{
-  >color: #9a9a64;
+  color: #9a9a64;
 }
