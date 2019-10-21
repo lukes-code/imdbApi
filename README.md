@@ -22,4 +22,5 @@ HTML<br />
 CSS<br />
 JavaScript<br />
 jQuery<br />
-OMDbApi<br />
+OMDbApi<br /
+Axios HTTP client<br /> 
