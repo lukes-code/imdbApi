@@ -3,7 +3,7 @@ A movie search website using the OMDb Api for IMDb
 
 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 
-This is still undergoing development, road map as follows:<br />
+This may still undergo development, road map as follows:<br />
 
 ✔️ Successful response from ombdApi<br />
 ✔️ Grid system<br />
@@ -12,6 +12,8 @@ This is still undergoing development, road map as follows:<br />
 ✔️ My personal favourite films/shows<br />
 
 🎥 This project works by searching the IMDb through the OMDb API.<br />
+
+Current repo live: https://lukes-code-imdbapi.netlify.com/ (You may have to allow scripts in browser<br />
 
 The search bar send a request based on the information you have typed in and returns the most relevant movies!<br />
 The most fun part about this project was allowing the user to create their own favourites, they can do so by checking the star next to the corresponding movie, this information is stored in an array before being converted to JSON and saved in localStorage. When the user then visits the "my favourites" section the JSON is converted back in to an array, firing off a request based on the information saved and once again returning the relevant movies. Because the information is saved in localStorage, the user can research and navigate to which ever page they please without losing their favourites. This also works backwards in that if you 'un-star' a movie it is subsequently removed from your favourites!
