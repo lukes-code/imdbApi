@@ -11,6 +11,12 @@ $(document).ready(() => {
         e.preventDefault();
     });
 
+    $('#searchForm').on('submit', (e) => {
+        let searchText = $('#searchText').val();
+        getMovies(searchText);
+        e.preventDefault();
+    });
+
     //My favourites
     $('.myFavourites').click(function() {
         //Remove quote
