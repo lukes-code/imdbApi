@@ -297,17 +297,19 @@ $(document).on("click", '.fa-star', function(){
         $(this).addClass('fas');
         let title = $(this).closest('.well').find('.search-title').text();
         films.push(title);
-        console.log('you added ' + title + ' to your favourites');
+        $('#favouriteLinks').html('<i class="fas fa-link"></i>&nbsp;my favourites(' + films.length + ')');
     } else{
         $(this).removeAttr('id');
         $(this).attr('id', 'not-checked');
         $(this).removeClass('fas');
         $(this).addClass('far');
         let title = $(this).closest('.well').find('.search-title').text();
-        console.log('you removed ' + title + ' from your favourites');
         films = films.filter(e => e !== title);
+        $('#favouriteLinks').html('<i class="fas fa-link"></i>&nbsp;my favourites(' + films.length + ')');
     }
   });
+
+
 
 //Reset random movie try count
 $(document).on("click", '.try-again-btn', function(){
