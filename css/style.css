@@ -5,7 +5,7 @@ body{
 }
 
 #movies img, #movie img{
-    width: 100%;
+    width: 85%;
 }
 
 @media (min-width: 960px){
@@ -67,7 +67,7 @@ body{
   }
 
   .search-year{
-    color: #a3a3a3;
+    color: #434343;
   }
 
   /* branding */
@@ -144,9 +144,8 @@ body{
 /* movie search */
 
 .well.text-center {
-  padding: 10px 20px;
+  padding: 10px 0px;
   border-radius: 10px;
-  box-shadow: 0 3px 5px rgba(163,163,163,0.20), 0 3px 5px rgba(163,163,163,0.20);
   margin-bottom: 10px;
 }
 
@@ -169,4 +168,69 @@ a.no-link-color:link,a.no-link-color:visited,a.no-link-color:active,a.no-link-co
 
 .fa-star{
   color: #9a9a64;
+}
+
+/* .middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+} */
+
+.middle {
+  position: absolute;
+  top: 50;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 35%;
+  width: 77%;
+  opacity: 0;
+  transition: 0.5s ease;
+  background-color: #778beb;
+  margin: 0 auto;
+  margin-bottom: 95px;
+  border-radius: 10px;
+}
+
+@media (max-width: 992px){
+    .middle {
+      position: absolute;
+      top: 50;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 45%;
+      width: 72%;
+      opacity: 0;
+      transition: 0.5s ease;
+      background-color: #778beb;
+      margin: 0 auto;
+      margin-bottom: 15px;
+      border-radius: 10px;
+  }
+}
+
+@media (max-width: 768px){
+  .middle {
+    width: 75%;
+  }
+}
+
+@media (max-width: 575px){
+  .middle {
+    width: 80%;
+  }
+}
+
+.well:hover img {
+  opacity: 0.2;
+}
+
+.well:hover .middle {
+  opacity: 1;
 }

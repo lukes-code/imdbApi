@@ -119,22 +119,25 @@ function getMovies(searchText){
                     isFavourite = films.includes(`${movie.Title}`);
                     // alert('is the title in the array? : ' + isFavourite);
                     output += `
-                        <div class="col-md-3 movie-listing">
+                        <div class="col-md-3 col-sm-6 col-xs-6 movie-listing">
                             <div class="well text-center">
                                 <a onclick="movieSelected('${movie.imdbID}')" href="#" id="goToMovie"><img src="${movie.Poster}" alt="${movie.Title}"/></a>
-                                <h6 class="search-title">${movie.Title}</h6>
-                                <p class="search-year">Released: ${movie.Year}</p>
+                                <div class="middle">
+                                    <h6 class="search-title">${movie.Title}</h6>
+                                    <p class="search-year">Released: ${movie.Year}</p>
                     `;
 
                     if(isFavourite == true){
                         output += `
-                                <div class="delegatedFave"><i class="fas fa-star" id="checked"></i></div>
+                                    <div class="delegatedFave"><i class="fas fa-star" id="checked"></i></div>
+                                </div>
                             </div>
                         </div>
                     `;
                     } else {
                         output += `
-                                <div class="delegatedFave"><i class="far fa-star" id="not-checked"></i></div>
+                                    <div class="delegatedFave"><i class="far fa-star" id="not-checked"></i></div>
+                                </div>
                             </div>
                         </div>
                     `;
