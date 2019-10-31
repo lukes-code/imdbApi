@@ -91,7 +91,7 @@ body{
   input#searchText {
     border-radius: 20px;
     height: 40px;
-    width: 75%;
+    width: 87%;
     margin: 0 auto;
     background-size: contain;
     background-image:url('../img/search.png');
@@ -106,13 +106,18 @@ body{
 }
 
 #favouriteLinks {
-  margin: 20px;
+  margin: 20px auto;
   text-align: center;
   cursor: pointer;
-  text-decoration: underline;
   display: inline;
   flex: 1;
+  border: 1.5px solid;
+  border-radius: 25px;
+  padding: 10px;
+  max-width: 210px;
 }
+
+
 
 /* Favourites */
 
@@ -151,7 +156,7 @@ body{
 
 .no-listings{
   text-align: center;
-  margin-top: 250px;
+  margin-top: 25px;
 }
 
 .randomMovie{
@@ -233,4 +238,46 @@ a.no-link-color:link,a.no-link-color:visited,a.no-link-color:active,a.no-link-co
 
 .well:hover .middle {
   opacity: 1;
+}
+
+.noResult{
+  display: flex;
+  margin-top: 130px;
+}
+
+#theForce{
+  height: 150px;
+  width: 150px;
+  position: relative;
+  flex: 1;
+}
+
+.hide{
+  display: none;
+}
+
+#favouriteLinks:hover {
+  background-color: white;
+  color: #000;
+  transition: 0.5s all ease;
+}
+
+#favouriteLinks:hover a {
+  color: #000;
+}
+
+@media (max-width: 768px){
+  #favouriteLinks{
+    max-width: 135px;
+    font-size: 0.8em;
+    padding: 5px;
+  }
+}
+
+#favouriteLinks:hover #default {
+  color: #000;
+}
+
+#default{
+  color: #fff;
 }

@@ -92,29 +92,27 @@ $(document).ready(() => {
 
 function getMovies(searchText){
     // console.log(searchText);
-    arNoListings = [
-    'Halloween!',
-    'Joker played by J. Phoenix!',
-    'The Big Bang Theory',
-    'Blood Diamond!',
-    'Venom! (can\'t wait for carnage)!',
-    'The Walking Dead (not as much as the comics though!)',
-    'Avengers!',
-    'Avengers: End Game!'
-    ];
-    axios.get('http://www.omdbapi.com?apiKey=' + apiKey + '&s=' + searchText)
+
+    let film = 'Hm, can\'t find a movie with that name';
+
+    if(searchText.length > 2){
+        axios.get('http://www.omdbapi.com?apiKey=' + apiKey + '&s=' + searchText)
         .then((response) => {
             let movies = response.data.Search;
             let output = '';
-            let film = 'You should search for a movie/series you like, I like ';
+            
             if(response.data.Response == 'False'){
+                $('#theForce').attr('src', 'img/not-found.svg');
+                $('#theForce').removeClass('hide');
                 $('#no-listings').addClass('no-listings');
-                film += arNoListings[Math.floor(Math.random() * arNoListings.length)];
                 $('#no-listings').text(film);
+                $('#noResult').addClass('noResult');
                 console.log(film);
             } else{
+                $('#theForce').addClass('hide');
                 $('#no-listings').text('');
                 $('#no-listings').removeClass('no-listings');
+                $('#noResult').removeClass('noResult');
                 $.each(movies, (index, movie) => {
                     isFavourite = films.includes(`${movie.Title}`);
                     // alert('is the title in the array? : ' + isFavourite);
@@ -152,6 +150,26 @@ function getMovies(searchText){
         .catch((err) => {
             console.log(err);
         });
+    } else if(searchText.length < 1){
+        let film = 'Find your favourite movie by searching!';
+        let output = '';
+        $('#theForce').attr('src', 'img/the-force.svg');
+        $('#theForce').removeClass('hide');
+        $('#no-listings').addClass('no-listings');
+        $('#no-listings').text(film);
+        $('#movies').html(output);
+        $('#noResult').addClass('noResult');
+    } else{
+        let film = 'No films here, search to find your favourites!';
+        let output = '';
+        $('#theForce').attr('src', 'img/the-force.svg');
+        $('#theForce').removeClass('hide');
+        $('#no-listings').addClass('no-listings');
+        $('#no-listings').text(film);
+        $('#movies').html(output);
+        $('#noResult').addClass('noResult');
+    }
+    
 }
 
 function movieSelected(id){
@@ -300,7 +318,7 @@ $(document).on("click", '.fa-star', function(){
         $(this).addClass('fas');
         let title = $(this).closest('.well').find('.search-title').text();
         films.push(title);
-        $('#favouriteLinks').html('<i class="fas fa-link"></i>&nbsp;my favourites(' + films.length + ')');
+        $('#favouriteLinks').html('&nbsp;Favourites&nbsp;<i class="fas fa-star" id="default"></i>' + films.length);
     } else{
         $(this).removeAttr('id');
         $(this).attr('id', 'not-checked');

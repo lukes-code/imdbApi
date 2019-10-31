@@ -18,22 +18,25 @@
         <!-- Search bar -->
         <div class="container">
            <div class="jumbotron" id="search-jumbo">
-               <h3 class="text-center">Search for a movie</h3>
+               <h4 class="text-center">The Open Movie Database</h4>
                <form id="searchForm">
-                   <input type="text" class="form-control" id="searchText" placeholder="Search...">
+                   <input autocomplete="off" type="text" class="form-control" id="searchText" placeholder="Search...">
                    <ul class="suggestions">
                 
                   </ul>
                </form>
                <!-- Other links -->
                 <div class="main-links">
-                    <h6 class="myFavourites" id="favouriteLinks"><i class="fas fa-link"></i>&nbsp;my favourites</h6>
-                    <h6 class="randomMovie" id="randomMovie"><a href="movie-random.html" class="no-link-color"><i class="fas fa-link"></i>&nbsp;I'm feeling lucky, punk!</a></h6>
-                    <h6 class="favourites" id="favouriteLinks"><i class="fas fa-link"></i>&nbsp;luke's favourites</h6>
+                    <h6 class="myFavourites" id="favouriteLinks">&nbsp;Favourites</h6>
+                    <h6 class="randomMovie" id="favouriteLinks"><a href="movie-random.html" class="no-link-color">&nbsp;I'm feeling lucky, punk!</a></h6>
+                    <h6 class="favourites" id="favouriteLinks">&nbsp;Luke's Favourites</h6>
                 </div>
            </div>
        </div>
-       <h5 id="no-listings" class="no-listings">You should search for a movie yano</h5>
+        <div class="noResult" id="noResult">
+            <img src="img/the-force.svg" alt="TheForce" id="theForce"/>
+        </div>
+       <p id="no-listings" class="no-listings">Find your movie by searching!</p>
        <!-- Populated movies -->
        <div class="container">
            <div id="movies" class="row">
