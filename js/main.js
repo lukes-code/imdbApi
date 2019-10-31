@@ -96,7 +96,7 @@ function getMovies(searchText){
     let film = 'Hm, can\'t find a movie with that name';
 
     if(searchText.length > 2){
-        axios.get('http://www.omdbapi.com?apiKey=' + apiKey + '&s=' + searchText)
+        axios.get('https://www.omdbapi.com?apiKey=' + apiKey + '&s=' + searchText)
         .then((response) => {
             let movies = response.data.Search;
             let output = '';
@@ -180,7 +180,7 @@ function movieSelected(id){
 
 function getMovie(){
     let movieId = sessionStorage.getItem('movieId');
-    axios.get('http://www.omdbapi.com?apiKey=' + apiKey + '&i=' + movieId)
+    axios.get('https://www.omdbapi.com?apiKey=' + apiKey + '&i=' + movieId)
         .then((response) => {
             console.log(response);
             let movie = response.data;
@@ -239,7 +239,7 @@ function getRandomMovie(){
     //only try 10 times to stop infinite loop
     console.log(randomTry);
     if(randomTry < 10){
-        axios.get('http://www.omdbapi.com?apiKey=' + apiKey + '&i=' + movieId)
+        axios.get('https://www.omdbapi.com?apiKey=' + apiKey + '&i=' + movieId)
             .then((response) => {
                 if(response.data.Response == 'True'){
                     console.log(response);
