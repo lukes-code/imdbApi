@@ -30,7 +30,7 @@ $(document).ready(() => {
         
         //Loop through favourites
         for(i = 0; i < films.length; i++){
-            axios.get('http://www.omdbapi.com?apiKey=' + apiKey + '&s=' + films[i])
+            axios.get('https://www.omdbapi.com?apiKey=' + apiKey + '&s=' + films[i])
             .then((response) => {
                 let movies = response.data.Search[0];
                     output += `
@@ -64,7 +64,7 @@ $(document).ready(() => {
         let output = '';
         //Loop through favourites
         for(i = 0; i < films.length; i++){
-            axios.get('http://www.omdbapi.com?apiKey=' + apiKey + '&s=' + films[i])
+            axios.get('https://www.omdbapi.com?apiKey=' + apiKey + '&s=' + films[i])
             .then((response) => {
                 let movies = response.data.Search[0];
                     output += `
