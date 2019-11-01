@@ -20,36 +20,49 @@ $(document).ready(() => {
     //My favourites
     $('.myFavourites').click(function() {
         //Remove quote
-        $('#no-listings').text('');
-        $('#no-listings').removeClass('no-listings');
-
         let films_deserialized = JSON.parse(localStorage.getItem('films'));
         // alert(films);
         var i;
         let output = '';
         
         //Loop through favourites
-        for(i = 0; i < films.length; i++){
-            axios.get('https://www.omdbapi.com?apiKey=' + apiKey + '&s=' + films[i])
-            .then((response) => {
-                let movies = response.data.Search[0];
-                    output += `
-                        <div class="col-md-3 movie-listing">
-                            <a onclick="movieSelected('${movies.imdbID}')" href="#" id="goToMovie">
-                                <div class="well text-center">
-                                    <img src="${movies.Poster}" alt="${movies.Title}"/>
-                                    <h6 class="search-title">${movies.Title}</h5>
-                                    <p class="search-year">Released: ${movies.Year}</h5>
-                                </div>
-                            </a>
-                        </div>
-                    `;
-                $('#movies').html(output);
-                console.log(response);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        if(films.length > 0){
+
+            $('#no-listings').text('');
+            $('#no-listings').removeClass('no-listings');
+            $('#theForce').addClass('hide');
+            $('#noResult').removeClass('noResult');
+
+            for(i = 0; i < films.length; i++){
+                axios.get('https://www.omdbapi.com?apiKey=' + apiKey + '&s=' + films[i])
+                .then((response) => {
+                    let movies = response.data.Search[0];
+                        output += `
+                            <div class="col-md-3 movie-listing">
+                                <a onclick="movieSelected('${movies.imdbID}')" href="#" id="goToMovie">
+                                    <div class="well text-center">
+                                        <img src="${movies.Poster}" alt="${movies.Title}"/>
+                                        <h6 class="search-title">${movies.Title}</h5>
+                                        <p class="search-year">Released: ${movies.Year}</h5>
+                                    </div>
+                                </a>
+                            </div>
+                        `;
+                    $('#movies').html(output);
+                    console.log(response);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+            }
+        } else {
+            let output = 'Hm, no favourites. How sad';
+            $('#no-listings').text(output);
+            $('#no-listings').addClass('no-listings');
+            $('#theForce').removeClass('hide');
+            $('#theForce').attr('src', 'img/not-found.svg');
+            $('#noResult').addClass('noResult');
+            $('#movies').html('');
         }
     });
 
@@ -58,6 +71,8 @@ $(document).ready(() => {
         //Remove quote
         $('#no-listings').text('');
         $('#no-listings').removeClass('no-listings');
+        $('#theForce').addClass('hide');
+        $('#noResult').removeClass('noResult');
         //Set hard coded favouites to find
         films = ['Joker', 'Halloween', 'Deadpool', 'The Walking Dead'];
         var i;
@@ -117,7 +132,7 @@ function getMovies(searchText){
                     isFavourite = films.includes(`${movie.Title}`);
                     // alert('is the title in the array? : ' + isFavourite);
                     output += `
-                        <div class="col-md-3 col-sm-6 col-xs-6 movie-listing">
+                        <div class="col-md-3 col-sm-6 col-6 movie-listing">
                             <div class="well text-center">
                                 <a onclick="movieSelected('${movie.imdbID}')" href="#" id="goToMovie"><img src="${movie.Poster}" alt="${movie.Title}"/></a>
                                 <div class="middle">

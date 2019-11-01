@@ -101,6 +101,13 @@ body{
     background-origin: content-box;
 }
 
+@media (max-width: 468px){
+  input#searchInput{
+    width: 100%;
+    height: 35px;
+  }
+}
+
 .main-links{
   display: flex;
 }
@@ -274,10 +281,20 @@ a.no-link-color:link,a.no-link-color:visited,a.no-link-color:active,a.no-link-co
   }
 }
 
+@media (max-width: 468px){
+  #favouriteLinks{
+    font-size: 0.6em;
+  }
+}
+
 #favouriteLinks:hover #default {
   color: #000;
 }
 
 #default{
   color: #fff;
+}
+
+h5.text-center {
+  margin-bottom: 20px;
 }
