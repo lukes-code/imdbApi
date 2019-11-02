@@ -42,8 +42,10 @@ $(document).ready(() => {
                                 <a onclick="movieSelected('${movies.imdbID}')" href="#" id="goToMovie">
                                     <div class="well text-center">
                                         <img src="${movies.Poster}" alt="${movies.Title}"/>
-                                        <h6 class="search-title">${movies.Title}</h5>
-                                        <p class="search-year">Released: ${movies.Year}</h5>
+                                        <div class="middle">
+                                          <h6 class="search-title">${movies.Title}</h5>
+                                         <p class="search-year">Released: ${movies.Year}</h5>
+                                        </div>
                                     </div>
                                 </a>
                             </div>
@@ -87,8 +89,10 @@ $(document).ready(() => {
                             <a onclick="movieSelected('${movies.imdbID}')" href="#" id="goToMovie">
                                 <div class="well text-center">
                                     <img src="${movies.Poster}" alt="${movies.Title}"/>
-                                    <h6 class="search-title">${movies.Title}</h5>
-                                    <p class="search-year">Released: ${movies.Year}</h5>
+                                    <div class="middle">
+                                        <h6 class="search-title">${movies.Title}</h5>
+                                        <p class="search-year">Released: ${movies.Year}</h5>
+                                    </div>
                                 </div>
                             </a>
                         </div>
