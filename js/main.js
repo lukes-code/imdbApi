@@ -345,8 +345,13 @@ $(document).on("click", '.fa-star', function(){
         $(this).addClass('far');
         let title = $(this).closest('.well').find('.search-title').text();
         films = films.filter(e => e !== title);
-        $('#favouriteLinks').html('<i class="fas fa-link"></i>&nbsp;my favourites(' + films.length + ')');
+        $('#favouriteLinks').html('&nbsp;Favourites<i class="fas fa-star" id="default"></i>(' + films.length + ')');
     }
+
+    if(films.length < 1){
+        $('#favouriteLinks').html('&nbsp;Favourites<i class="fas fa-star" id="default"></i>');
+    }
+
   });
 
 

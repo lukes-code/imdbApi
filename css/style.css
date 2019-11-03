@@ -149,6 +149,16 @@ body{
   padding: 30px;
   right: 25px;
   bottom: 5px;
+  background-color: #30336b;
+  border-radius: 60px;
+  border: 1.5px solid #fff;
+  transition: all 0.5s ease;
+}
+
+@media (min-width: 1400px){
+  .socials{
+    border:none;
+  }
 }
 
 #github, #instagram{
@@ -280,7 +290,7 @@ a.no-link-color:link,a.no-link-color:visited,a.no-link-color:active,a.no-link-co
 
 @media (max-width: 468px){
   #favouriteLinks{
-    font-size: 0.6em;
+    font-size: 0.7em;
   }
 }
 
@@ -294,4 +304,8 @@ a.no-link-color:link,a.no-link-color:visited,a.no-link-color:active,a.no-link-co
 
 h5.text-center {
   margin-bottom: 20px;
+}
+
+h6#favouriteLinks {
+  text-decoration: none;
 }
