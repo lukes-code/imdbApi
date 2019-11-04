@@ -203,25 +203,16 @@ function getMovie(){
         .then((response) => {
             console.log(response);
             let movie = response.data;
-            let arYears = movie.Year.split("-");
-            if (arYears[1] === undefined) {
-                arYears[1] = 'current';
-                arYears[0] = arYears[0].substr(0, arYears[0].length - 1);
-            }
-            // make sure movie date has seperated
-            // console.log('years:');
-            // console.log(arYears);
             let output = `
                 <div class="row">
                     <div class="col-md-4">
-                        <img src="${movie.Poster}" alt="${movie.Title}" class="thumbnail"/>
+                        <img src="${movie.Poster}" alt="${movie.Title}" id="specificPage" class="thumbnail"/>
                     </div>
                     <div class="col-md-8">
                         <h2>${movie.Title}</h2>
                         <ul class="list-group">
                             <li class="list-group-item"><strong>Genre:</strong> ${movie.Genre}</li>
                             <li class="list-group-item"><strong>Released:</strong> ${movie.Released}</li>
-                            <li class="list-group-item"><strong>Years Running:</strong> ${arYears[0]} to ${arYears[1]}</li>
                             <li class="list-group-item"><strong>Rated:</strong> ${movie.Rated}</li>
                             <li class="list-group-item"><strong>IMDB Rating:</strong> ${movie.imdbRating}</li>
                             <li class="list-group-item"><strong>Director:</strong> ${movie.Director}</li>
@@ -233,14 +224,14 @@ function getMovie(){
                 </div>
                 <div class="row">
                 <div class="well">
-                    <h3>Plot</h3>
-                    <div class="co-md-12 list-group-item">
+                    <h3 id="plot">Plot</h3>
+                    <div class="col-md-12 list-group-item" id="plot">
                         <p>${movie.Plot}</p>
                     </div>
                     <hr>
-                    <a href="http://imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-primary">View IMDB</a>
+                    <a href="http://imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-primary" id="genBtn">View IMDB</a>
                     <!--THis looks better underlined-->
-                    <a href="index.html" class="btn btn-default"><u>Go back to search</u></a>
+                    <a href="index.html" class="btn btn-default" id="genBtn"><u>Go back to search</u></a>
                 </div>
                 </div>
             `;

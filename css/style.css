@@ -146,18 +146,15 @@ body{
 .socials {
   flex: 1;
   position: fixed;
-  padding: 30px;
+  padding: 10px 10px 37px 10px;
   right: 25px;
   bottom: 5px;
   background-color: #30336b;
-  border-radius: 60px;
-  border: 1.5px solid #fff;
-  transition: all 0.5s ease;
 }
 
-@media (min-width: 1400px){
+@media (max-width: 1400px){
   .socials{
-    border:none;
+   display: none; 
   }
 }
 
@@ -308,4 +305,66 @@ h5.text-center {
 
 h6#favouriteLinks {
   text-decoration: none;
+}
+
+img#specificPage {
+  position: relative;
+  margin: 65px 10px 30px 10px;
+  min-height: 430px;
+}
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 0.9rem 1.25rem;
+  margin-bottom: -1px;
+  background-color: #686de0;
+  color: #fff;
+  border: 0px;
+  transition: all 0.6s ease;
+}
+
+.list-group-item:hover{
+  background-color: #4834d4;
+}
+
+div#plot {
+  min-width: 100%;
+  margin: 0 20px;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px){
+  div#plot{
+    margin: 0px;
+  }
+}
+
+div#movie {
+  margin-top: 50px;
+}
+
+#genBtn {
+  margin: 20px auto;
+  text-align: center;
+  cursor: pointer;
+  display: inline;
+  flex: 1;
+  border: 1.5px solid #fff;
+  border-radius: 25px;
+  padding: 10px;
+  max-width: 210px;
+  background-color: transparent;
+  color: #fff;
+}
+
+#genBtn:hover {
+  background-color: #eb4d4b;
+  border: 1.5px solid #eb4d4b;
+  color: #000;
+  transition: 0.5s all ease;
+}
+
+h3#plot{
+  margin-left: 25px;
 }
