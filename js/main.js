@@ -38,7 +38,7 @@ $(document).ready(() => {
                 .then((response) => {
                     let movies = response.data.Search[0];
                         output += `
-                            <div class="col-md-3 movie-listing">
+                            <div class="col-md-3 col-sm-6 col-6 movie-listing">
                                 <a onclick="movieSelected('${movies.imdbID}')" href="#" id="goToMovie">
                                     <div class="well text-center">
                                         <img src="${movies.Poster}" alt="${movies.Title}"/>
@@ -209,7 +209,7 @@ function getMovie(){
                         <img src="${movie.Poster}" alt="${movie.Title}" id="specificPage" class="thumbnail"/>
                     </div>
                     <div class="col-md-8">
-                        <h2>${movie.Title}</h2>
+                        <h2 id="plotHeader">${movie.Title}</h2>
                         <ul class="list-group">
                             <li class="list-group-item"><strong>Genre:</strong> ${movie.Genre}</li>
                             <li class="list-group-item"><strong>Released:</strong> ${movie.Released}</li>
@@ -223,7 +223,7 @@ function getMovie(){
                     </div>
                 </div>
                 <div class="row">
-                <div class="well">
+                <div class="col-md-12">
                     <h3 id="plot">Plot</h3>
                     <div class="col-md-12 list-group-item" id="plot">
                         <p>${movie.Plot}</p>
@@ -231,12 +231,12 @@ function getMovie(){
                     <hr>
                     <a href="http://imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-primary" id="genBtn">View IMDB</a>
                     <!--THis looks better underlined-->
-                    <a href="index.html" class="btn btn-default" id="genBtn"><u>Go back to search</u></a>
+                    <a href="index.html" target="_blank" class="btn btn-primary" id="genBtn">Go back to search</a>
                 </div>
                 </div>
             `;
 
-            $('#movie').html(output);
+            $('#specMovie').html(output);
         })
         .catch((err) => {
             console.log(err);
@@ -336,7 +336,7 @@ $(document).on("click", '.fa-star', function(){
         $(this).addClass('far');
         let title = $(this).closest('.well').find('.search-title').text();
         films = films.filter(e => e !== title);
-        $('#favouriteLinks').html('&nbsp;Favourites<i class="fas fa-star" id="default"></i>(' + films.length + ')');
+        $('#favouriteLinks').html('&nbsp;Favourites<i class="fas fa-star" id="default"></i>' + films.length);
     }
 
     if(films.length < 1){
