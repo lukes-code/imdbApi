@@ -37,6 +37,9 @@ $(document).ready(() => {
                 axios.get('https://www.omdbapi.com?apiKey=' + apiKey + '&s=' + films[i])
                 .then((response) => {
                     let movies = response.data.Search[0];
+                        // if(movies.Poster == 'N/A'){
+                        //     movies.Poster == '../img/comingsoon.jpg';
+                        // }
                         output += `
                             <div class="col-md-3 col-sm-6 col-6 movie-listing">
                                 <a onclick="movieSelected('${movies.imdbID}')" href="#" id="goToMovie">
@@ -133,17 +136,20 @@ function getMovies(searchText){
                 $('#no-listings').removeClass('no-listings');
                 $('#noResult').removeClass('noResult');
                 $.each(movies, (index, movie) => {
+                    
                     isFavourite = films.includes(`${movie.Title}`);
                     // alert('is the title in the array? : ' + isFavourite);
+                    if(`${movie.Poster}` == 'N/A'){
+                        movie.Poster = 'img/comingsoon.jpg';
+                     }
                     output += `
                         <div class="col-md-3 col-sm-6 col-6 movie-listing">
                             <div class="well text-center">
-                                <a onclick="movieSelected('${movie.imdbID}')" href="#" id="goToMovie"><img src="${movie.Poster}" alt="${movie.Title}"/></a>
+                                <a onclick="movieSelected('${movie.imdbID}')" href="#" id="goToMovie"><img id="moviePoster" src="${movie.Poster}" alt="${movie.Title}"/></a>
                                 <div class="middle">
                                     <h6 class="search-title">${movie.Title}</h6>
                                     <p class="search-year">Released: ${movie.Year}</p>
                     `;
-
                     if(isFavourite == true){
                         output += `
                                     <div class="delegatedFave"><i class="fas fa-star" id="checked"></i></div>
