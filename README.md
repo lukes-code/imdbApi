@@ -26,3 +26,11 @@ JavaScript<br />
 jQuery<br />
 OMDbApi<br />
 Axios HTTP client<br /> 
+
+# Mockup Images
+____________________________________________________
+🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
+
+![alt text](https://github.com/lukes-code/imdbApi/blob/master/img/favourites.png)
+<br />
+![alt text](https://github.com/lukes-code/imdbApi/blob/master/img/home.png)
